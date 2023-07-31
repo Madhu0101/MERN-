@@ -1,0 +1,111 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rest Countries</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .country-info {
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 15px;
+            border-radius: 5px;
+            background-color: #fff;
+        }
+
+        img {
+            height: 100px;
+            width: 150px;
+            border: 1px solid #ccc;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 20px;
+            margin-bottom: 10px;
+        }
+
+        p {
+            font-size: 16px; 
+        }
+
+        @media (max-width: 770px) {
+            .container {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            img {
+                height: 80px;
+                width: 120px;
+            }
+
+            h2 {
+                font-size: 18px; 
+            }
+
+            p {
+                font-size: 15px; 
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container"></div>
+
+<script>
+    fetch("https://restcountries.com/v3.1/all")
+        .then(response => response.json())
+        .then(data => {
+            var parent = document.querySelector(".container");
+            data.forEach(country => {
+                var child = document.createElement("div");
+                child.classList.add("country-info");
+
+                var imgele = document.createElement("img");
+                imgele.src = country.flags.svg;
+                imgele.alt = country.name.common + " Flag";
+                child.append(imgele);
+
+                var head = document.createElement("h2");
+                head.textContent = country.name.common;
+                child.append(head);
+
+                var population = document.createElement("p");
+                population.textContent = "Population: " + country.population;
+                child.append(population);
+
+                var region = document.createElement("p");
+                region.textContent = "Region: " + country.region;
+                child.append(region);
+
+                var capital = document.createElement("p");
+                capital.textContent = "Capital: " + country.capital;
+                child.append(capital);
+
+                parent.append(child);
+            });
+        })
+        
+</script>
+</body>
+</html>

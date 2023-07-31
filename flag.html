@@ -1,0 +1,149 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        body {
+            background-color: black;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+            gap: 10px;
+        }
+        h2 {
+                font-size: 1.2rem;
+                color: aliceblue;
+            }
+        p {
+                font-size: 1rem;
+                color: azure;
+            }
+        img {
+            height: 150px;
+            width: 200px;
+            border: 5px solid bisque; /* Fix the border style */
+            object-fit: cover;
+        }
+        .country-info {
+            display: grid;
+            grid-template-rows: auto auto auto auto; /* Rows for image and 3 information sections */
+            text-align: center;
+            border: 1px solid #ccc;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        @media (max-width: 1000px) {
+            .container {
+                grid-template-columns: 1fr 1fr;
+            }
+            h2 {
+                font-size: 1.2rem;
+                color: aliceblue;
+            }
+            p {
+                font-size: 1rem;
+                color: azure;
+            }
+        }
+        @media (max-width: 550px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container"></div>
+
+<script>
+    var gridsData =
+        [
+            {
+                heading: "India",
+                Population: "1,394,975,829",
+                Region: "Asia",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/commons/7/7b/India_flag_300.png",
+                Capital: "New Delhi"
+            },
+            {
+                heading: "Germany",
+                Population: "81,770,900",
+                Region: "Europe",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/en/thumb/b/ba/Flag_of_Germany.svg/1200px-Flag_of_Germany.svg.png",
+                Capital: "Berlin"
+            },
+            {
+                heading: "United States",
+                Population: "323,947,000",
+                Region: "Americas",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a4/Flag_of_the_United_States.svg/640px-Flag_of_the_United_States.svg.png",
+                Capital: "Washington D.C"
+            },
+            {
+                heading: "Brazil",
+                Population: "206,135,893",
+                Region: "Americas",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/commons/0/01/Brazil_flag_300.png",
+                Capital: "Brasilia"
+            },
+            {
+                heading: "Iceland",
+                Population: "334,300",
+                Region: "Europe",
+                imageUrl:
+                    "https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Flag_of_Iceland.svg/640px-Flag_of_Iceland.svg.png",
+                Capital: "Reykjavik"
+            }
+        ];
+
+    var parent = document.querySelector(".container"); 
+    gridsData.forEach(function (country) {
+    var child = document.createElement("div");
+    child.classList.add("country-info"); 
+
+        var imgele = document.createElement("img");
+        imgele.src = country.imageUrl;
+        imgele.alt = country.heading + " image"; 
+        child.append(imgele);
+
+        var head = document.createElement("h2");
+        head.textContent = "Heading: " + country.heading; 
+        child.append(head);
+
+        var population = document.createElement("p");
+        population.textContent = "Population: " + country.Population; 
+        child.append(population);
+
+        var region = document.createElement("p");
+        region.textContent = "Region: " + country.Region; 
+        child.append(region);
+
+        var capital = document.createElement("p");
+        capital.textContent = "Capital: " + country.Capital; 
+
+        parent.append(child);
+    });
+</script>
+</body>
+</html>
