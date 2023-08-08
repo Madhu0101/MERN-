@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* .fun {
+            background-color: yellow;
+        } */
+    </style>
+</head>
+<body>
+    <ol id="work"></ol>
+    
+    <script>
+    //    var ulem= document.createElement("ul");
+    //     var li1= document.createElement("li");
+    //     li1.innerText="hb1";
+    //     ulem.append(li1);
+    //     var li2= document.createElement("li");
+    //     li2.innerText="hb2";
+    //     ulem.append(li2);
+    //     var li3= document.createElement("li");
+    //     li3.innerText="hb3";
+    //     ulem.append(li3);
+    //     var li4= document.createElement("li");
+    //     li4.innerText="hb4";
+    //     ulem.append(li4);
+    //     var li5= document.createElement("li");
+    //     li5.innerText="hb5";
+    //     ulem.append(li5);
+    //     document.body.append(ulem);
+
+
+    // var ulem= document.createElement("ul");
+    // var hobbie= ["hb1","hb2","hb3","hb4","hb5"];
+    // hobbie.forEach(x=>{
+    //     var li1= document.createElement("li");
+    //     li1.innerText="hb1";
+    //     ulem.append(li1);
+    // });
+    // document.body.append(ulem);
+
+
+    //  var ulem= document.createElement("ul");
+    // var hobbie= ["hb1","hb2","hb3","hb4","hb5"];
+    // hobbie.forEach(x=>{
+    //     ulem.innerHTML = ulem.innerHTML + `<li class="fun">${x}</li>`;
+    // });
+    // document.body.append(ulem);
+
+    fetch("https://restcountries.com/v3.1/all")
+ .then((res) => res.json())
+ .then((fun) => fun.sort((a,b) => b.population-a.population))
+ .then((done)=>done.map(({ name :{common},population}) => ({common,population})))
+ .then((data) => {
+    var ulem= document.createElement("ol"); 
+    data.forEach(({common,population})=> {
+    ulem.innerHTML += `<li class="work">${common} - ${population}</li>`;
+  });
+  document.body.append(ulem);
+});
+
+
+
+
+
+
+    </script>
+</body>
+</html>

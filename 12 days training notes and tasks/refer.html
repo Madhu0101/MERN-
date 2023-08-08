@@ -1,0 +1,64 @@
+// Function to create a grid with heading, paragraph, and image
+function createGrid(headingText, paragraphText, imageUrl) {
+  // Create grid container
+  var gridContainer = document.createElement("div");
+  gridContainer.classList.add("grid-container");
+
+  // Create heading
+  var heading = document.createElement("h2");
+  heading.textContent = headingText;
+
+  // Create paragraph
+  var paragraph = document.createElement("p");
+  paragraph.textContent = paragraphText;
+
+  // Create image
+  var image = document.createElement("img");
+  image.src = imageUrl;
+
+  // Append heading, paragraph, and image to grid container
+  gridContainer.appendChild(heading);
+  gridContainer.appendChild(paragraph);
+  gridContainer.appendChild(image);
+
+  return gridContainer;
+}
+
+// Array of data for the grids (heading, paragraph, and image URL)
+var gridsData = [
+  {
+    heading: "Grid 1",
+    paragraph: "Description for Grid 1",
+    imageUrl: "grid1.jpg",
+  },
+  {
+    heading: "Grid 2",
+    paragraph: "Description for Grid 2",
+    imageUrl: "grid2.jpg",
+  },
+  {
+    heading: "Grid 3",
+    paragraph: "Description for Grid 3",
+    imageUrl: "grid3.jpg",
+  },
+  {
+    heading: "Grid 4",
+    paragraph: "Description for Grid 4",
+    imageUrl: "grid4.jpg",
+  },
+  {
+    heading: "Grid 5",
+    paragraph: "Description for Grid 5",
+    imageUrl: "grid5.jpg",
+  },
+];
+
+// Create and append grids to the body
+document.addEventListener("DOMContentLoaded", function () {
+  var body = document.body;
+
+  gridsData.forEach((gridData) => {
+    var grid = createGrid(gridData.heading, gridData.paragraph, gridData.imageUrl);
+    body.appendChild(grid);
+  });
+});

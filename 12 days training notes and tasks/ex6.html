@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+ <meta charset="UTF-8" />
+ <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+ <title>Slideshow with Arrows (Manual Control)</title>
+ <style>
+ body {
+ font-family: Arial, sans-serif;
+ margin: 0;
+ padding: 0;
+ }
+
+ /* Center the slideshow container */
+ .slideshow {
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ height: 100vh; /* Set the height to fill the entire viewport */
+ position: relative; /* Add position relative to position the buttons */
+ }
+
+ /* Hide all images by default */
+.slideshow img {
+ display: none;
+ width: 100%;
+ height: 100%;
+ object-fit: cover; /* Ensure the image scales proportionally and covers the container */
+ }
+ /* Show the first image */
+.slideshow img:first-child {
+ display: block;
+ }
+
+/* Style the arrow buttons */
+ .arrow-button {
+ font-size: 24px;
+ cursor: pointer;
+ position: absolute;
+ top: 50%;
+ transform: translateY(-50%);
+background: rgba(0, 0, 0, 0.5);
+ color: #fff;
+ padding: 8px;
+ }
+
+ #prevButton {
+left: 10px;
+ }
+
+ #nextButton {
+ right: 10px;
+ }
+</style>
+ </head>
+ <body>
+ <div class="slideshow">
+ <img
+src="https://assets.adidas.com/images/w_320,f_auto,q_auto,fl_lossy,c_fill,g_auto/4f83ee850aea4595bb2eae3200957f3a_9366/Ultra-Strike_M_Grey_EY3172_01_standard.jpg"
+ />
+<img
+ src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRVwMMFWdZw6yW3697UNE2MdHURMzt7N9H2iQ&usqp=CAU"
+ alt="Damon Salvator"
+  />
+  <img
+  src="https://en-ae.sssports.com/dw/image/v2/BDVB_PRD/on/demandware.static/-/Sites-akeneo-master-catalog/default/dw51b29a49/sss/SSS2/A/D/H/P/7/SSS2_ADHP7564_4066748172337_1.jpg?sw=700&sh=700&sm=fit"
+  alt="Klaus"
+  />
+  <img
+  src="https://5.imimg.com/data5/OE/ER/LH/SELLER-42746232/run-support-men-s-jogging-shoes-dark-blue-250x250.jpg"
+ alt="Peaky Blinders"
+  />
+  <img
+  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRTWwkdAcWGn1b9xnQzuy3Uf1zyTFPhjkD9LTQ-9VPbqMUGDCLax0ptyG2Hoo8Tm5qTCN4&usqp=CAU"
+  alt="Image 5"
+  />
+  </div>
+   <span class="arrow-button" id="prevButton">&#10094;</span>
+ <span class="arrow-button" id="nextButton">&#10095;</span>
+
+ <script>
+const slideshowContainer = document.querySelector(".slideshow");
+ const prevButton = document.getElementById("prevButton");
+ const nextButton = document.getElementById("nextButton");
+ const images = slideshowContainer.querySelectorAll("img");
+
+ let currentIndex = 0;
+
+ // Function to display the current image
+ function showImage(index) {
+ images.forEach((image, i) => {
+if (i === index) {
+ image.style.display = "block";
+ image.style.display = "none";
+ }
+ });
+ }
+
+ // Function to show the next image
+function showNextImage() {
+currentIndex = (currentIndex + 1) % images.length;
+showImage(currentIndex);
+}
+
+// Function to show the previous image
+ function showPrevImage() {
+currentIndex = (currentIndex - 1 + images.length) % images.length;
+ showImage(currentIndex);
+ }
+
+// Event listeners for the arrow buttons
+ prevButton.addEventListener("click", () => {
+ showPrevImage();
+});
+
+ nextButton.addEventListener("click", () => {
+ showNextImage();
+});
+
+// Show the first image initially
+ showImage(currentIndex);
+ </script>
+</body>
+</html>
+
+             

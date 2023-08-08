@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <ol id="work"></ol>
+
+    <script>
+
+// task 4 highest to lowest population country in website
+//         fetch("https://restcountries.com/v3.1/all")
+//  .then((res) => res.json())
+//  .then((fun) => fun.sort((a,b) => b.population-a.population))
+//  .then((done)=>done.map(({ "name":{common}}) => common))
+ 
+ 
+//  .then((data) => {
+//     var ulem= document.createElement("ol"); 
+//  data.forEach((x)=> {
+//     ulem.innerHTML = ulem.innerHTML+ `<li class="work">${x}</li>`;
+//  });
+//  document.body.append(ulem);
+// });
+
+fetch("https://restcountries.com/v3.1/all")
+  .then((res) => res.json())
+  .then((fun) => fun.sort((a, b) => b.population - a.population))
+  .then((done) => done.map(({ name: { common }, population }) => ({ common, population })))
+  .then((data) => {
+    var ulem = document.createElement("ol");
+    data.forEach(({ common, population }) => {
+      ulem.innerHTML += `<li class="work">${common} - ${population}</li>`;
+    });
+    document.body.append(ulem);
+  });
+
+    </script>
+</body>
+</html>

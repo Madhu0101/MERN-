@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            display: grid;
+            place-content: center;
+            min-height: 100vh;
+           
+            margin: 0;
+        }
+      .slide {
+        background-color: aquamarine;
+        height: 100vh;
+        width: 100vw;
+
+        display: grid;
+        place-content: center;
+      }
+    </style>
+
+</head>
+<body>
+   <div class="slide">
+    <button onclick="start()">Start ></button>
+    <button onclick="stop()">Stop ></button>
+    <button onclick="pause()">pause ></button>
+    
+    </div>
+    <script>
+        var cntr = 0; 
+    
+            var slideelement = document.querySelector(".slide");
+             var list =["red","yellow","orange","grey","green"]
+            let sec;
+             function start() {
+              
+             sec= setInterval(()=> {
+                slideelement.setAttribute("style","background-color:" + list[cntr])
+                cntr++;
+                if(cntr>list.length) cntr=0;
+             },1000 );
+    
+    
+            }
+    
+            function stop() {
+                clearInterval(sec);
+                slideelement.setAttribute("style","background-color:" + list[2]);
+                cntr = 0;
+            }
+    
+            function pause() {
+                clearInterval(sec);
+                slideelement.setAttribute("style","background-color:" + list[cntr]);
+            }
+        
+    
+    
+        </script> 
+    
+        
+    </body>
+    </html>
